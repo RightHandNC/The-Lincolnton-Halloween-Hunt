@@ -1,14 +1,315 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>The Lincolnton Halloween Hunt</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <h1>🎃 The Lincolnton Halloween Hunt 🎃</h1>
+    <main class="container">
 
-    <p>Welcome to the hunt!</p>
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <header class="header">
+
+            <div class="pumpkin">
+                🎃
+            </div>
+
+            <h1>
+                The Lincolnton Halloween Hunt
+            </h1>
+
+            <p class="subtitle">
+                Your adventure begins...
+            </p>
+
+        </header>
+
+
+        <!-- =========================
+             COUNTDOWN
+        ========================== -->
+
+        <section class="card countdown-card">
+
+            <h2>
+                Halloween Countdown
+            </h2>
+
+            <div class="countdown">
+
+                <div>
+                    <span id="days">00</span>
+                    <small>Days</small>
+                </div>
+
+                <div>
+                    <span id="hours">00</span>
+                    <small>Hours</small>
+                </div>
+
+                <div>
+                    <span id="minutes">00</span>
+                    <small>Minutes</small>
+                </div>
+
+                <div>
+                    <span id="seconds">00</span>
+                    <small>Seconds</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MUSIC
+        ========================== -->
+
+        <section class="card music-card">
+
+            <div class="section-heading">
+
+                <span>🎵</span>
+
+                <h2>
+                    Ambience
+                </h2>
+
+            </div>
+
+
+            <button
+                id="musicToggle"
+                class="music-button"
+            >
+                ▶ Play Music
+            </button>
+
+
+            <audio
+                id="music"
+                loop
+            >
+
+                <source
+                    src="music/ambience.mp3"
+                    type="audio/mpeg"
+                >
+
+                Your browser does not support audio.
+
+            </audio>
+
+        </section>
+
+
+        <!-- =========================
+             MAP
+        ========================== -->
+
+        <section class="card map-card">
+
+            <div class="section-heading">
+
+                <span>🗺️</span>
+
+                <h2>
+                    The Map
+                </h2>
+
+            </div>
+
+
+            <img
+                src="images/map.jpg"
+                alt="Map of the treasure hunt area"
+                class="map-image"
+            >
+
+        </section>
+
+
+        <!-- =========================
+             PROGRESS
+        ========================== -->
+
+        <section class="progress-section">
+
+            <div class="progress-text">
+
+                <span id="clueProgress">
+                    Clue 1 of 1
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div id="progressFill"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CLUE
+        ========================== -->
+
+        <section
+            id="clueCard"
+            class="card clue-card"
+        >
+
+            <div class="clue-number">
+
+                CLUE
+                <span id="currentClueNumber">
+                    1
+                </span>
+
+            </div>
+
+
+            <h2 id="clueTitle">
+                Your First Clue
+            </h2>
+
+
+            <div
+                id="clueText"
+                class="clue-text"
+            >
+                Loading clue...
+            </div>
+
+
+            <!-- ANSWER -->
+
+            <div class="answer-area">
+
+                <label for="answerInput">
+                    What is your answer?
+                </label>
+
+
+                <input
+                    type="text"
+                    id="answerInput"
+                    placeholder="Enter your answer..."
+                    autocomplete="off"
+                >
+
+
+                <button
+                    id="checkAnswer"
+                    class="answer-button"
+                >
+                    Check Answer
+                </button>
+
+
+                <div
+                    id="answerFeedback"
+                    class="answer-feedback"
+                    aria-live="polite"
+                >
+                </div>
+
+            </div>
+
+
+            <!-- SUCCESS -->
+
+            <div
+                id="nextClueArea"
+                class="next-clue-area hidden"
+            >
+
+                <div class="success-message">
+
+                    <div class="success-icon">
+                        ✓
+                    </div>
+
+
+                    <h3>
+                        Correct!
+                    </h3>
+
+
+                    <p id="successText">
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="nextClue"
+                    class="next-button"
+                >
+                    Continue to Next Clue →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RESET
+        ========================== -->
+
+        <section class="reset-section">
+
+            <button
+                id="resetProgress"
+                class="reset-button"
+            >
+                Reset Hunt Progress
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer>
+
+            <p>
+                Good luck... and watch your back.
+            </p>
+
+        </footer>
+
+
+    </main>
+
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
