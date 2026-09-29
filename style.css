@@ -1,0 +1,355 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0b080d;
+    color: #f5eee6;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+/* HEADER */
+
+.header {
+    text-align: center;
+    padding: 25px 10px;
+}
+
+.pumpkin {
+    font-size: 3.5rem;
+}
+
+h1 {
+    margin: 5px 0;
+    color: #ff7518;
+    font-family: Georgia, serif;
+    font-size: 2.4rem;
+}
+
+.subtitle {
+    color: #aaa;
+}
+
+/* CARDS */
+
+.card {
+    background: #171219;
+    border: 1px solid #302633;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* COUNTDOWN */
+
+.countdown-card {
+    text-align: center;
+}
+
+.countdown-card h2 {
+    color: #ff7518;
+    margin-top: 0;
+}
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.countdown div {
+    background: #0d0a0f;
+    border-radius: 10px;
+    padding: 10px 4px;
+}
+
+.countdown span {
+    display: block;
+    color: #ff7518;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.countdown small {
+    color: #888;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+}
+
+/* MUSIC */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-heading h2 {
+    margin: 0;
+}
+
+.music-button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px;
+
+    background: transparent;
+    border: 1px solid #ff7518;
+    border-radius: 10px;
+
+    color: #ff7518;
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.music-button:hover {
+    background: #ff7518;
+    color: #111;
+}
+
+/* MAP */
+
+.map-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+/* PROGRESS */
+
+.progress-section {
+    margin: 25px 0 15px;
+}
+
+.progress-text {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #29232d;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progressFill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(
+        90deg,
+        #ff4d00,
+        #ff9a3c
+    );
+    transition: width 0.5s ease;
+}
+
+/* CLUE */
+
+.clue-number {
+    color: #ff7518;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.clue-card h2 {
+    margin-top: 8px;
+    font-family: Georgia, serif;
+}
+
+.clue-text {
+    margin: 20px 0;
+    color: #ddd5df;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* ANSWER */
+
+.answer-area label {
+    display: block;
+    margin-bottom: 8px;
+    color: #bbb;
+}
+
+#answerInput {
+    width: 100%;
+    padding: 14px;
+
+    background: #0d0a0f;
+    border: 1px solid #403645;
+    border-radius: 10px;
+
+    color: white;
+    font-size: 1rem;
+}
+
+#answerInput:focus {
+    outline: none;
+    border-color: #ff7518;
+}
+
+.answer-button,
+.next-button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #ff7518;
+    color: #111;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.answer-button:active,
+.next-button:active {
+    transform: scale(0.98);
+}
+
+/* FEEDBACK */
+
+.answer-feedback {
+    min-height: 25px;
+    margin-top: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.incorrect {
+    color: #ff6464;
+}
+
+.correct {
+    color: #6df58a;
+}
+
+/* SUCCESS */
+
+.next-clue-area {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.success-message {
+    padding: 20px;
+    background: rgba(70, 150, 80, 0.08);
+    border: 1px solid #3e6848;
+    border-radius: 12px;
+
+    animation: successPop 0.5s ease-out;
+}
+
+.success-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+    background: #5ee878;
+
+    color: #101010;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.success-message h3 {
+    color: #6df58a;
+    font-size: 1.5rem;
+    margin: 12px 0 5px;
+}
+
+.success-message p {
+    color: #d5e8d8;
+    line-height: 1.6;
+}
+
+/* HIDDEN */
+
+.hidden {
+    display: none !important;
+}
+
+/* RESET */
+
+.reset-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.reset-button {
+    background: transparent;
+    border: none;
+    color: #777;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    color: #665f6b;
+    padding: 20px 0 40px;
+}
+
+/* ANIMATION */
+
+@keyframes successPop {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* DESKTOP */
+
+@media (min-width: 700px) {
+
+    .container {
+        padding: 30px 20px;
+    }
+
+    .card {
+        padding: 28px;
+    }
+
+}
