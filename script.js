@@ -13,7 +13,9 @@
    You can change this later if you want.
 */
 
-const HALLOWEEN_DATE = "2026-10-31T00:00:00";
+const MAP_REVEAL_DATE = "2026-10-24T00:00:00";
+const HUNT_START_DATE = "2026-10-31T00:00:00";
+const FIRST_LIGHT_DATE = "2026-10-31T07:19:00";
 
 
 /* =====================================================
@@ -144,68 +146,332 @@ const musicToggle =
    COUNTDOWN
 ===================================================== */
 
-function updateCountdown() {
+/* =====================================================
+   HUNT TIMING
+===================================================== */
 
-    const target =
-        new Date(HALLOWEEN_DATE).getTime();
+const mapRevealTime =
+    new Date(MAP_REVEAL_DATE).getTime();
+
+const huntStartTime =
+    new Date(HUNT_START_DATE).getTime();
+
+const firstLightTime =
+    new Date(FIRST_LIGHT_DATE).getTime();
+
+
+/* Page elements */
+
+const mapCard =
+    document.querySelector(".map-card");
+
+const huntStatus =
+    document.getElementById("huntStatus");
+
+const preHuntMessage =
+    document.getElementById("preHuntMessage");
+
+const preHuntText =
+    document.getElementById("preHuntText");
+
+const preHuntCountdown =
+    document.getElementById("preHuntCountdown");
+
+const firstLightMessage =
+    document.getElementById("firstLightMessage");
+
+const clueCard =
+    document.getElementById("clueCard");
+
+const progressSection =
+    document.querySelector(".progress-section");
+
+
+/* Hide things initially */
+
+mapCard.classList.add("hidden");
+
+clueCard.classList.add("hidden");
+
+progressSection.classList.add("hidden");
+
+firstLightMessage.classList.add("hidden");
+
+
+/* =====================================================
+   FORMAT COUNTDOWN
+===================================================== */
+
+function updateNumber(element, value) {
+
+    element.textContent =
+        String(Math.max(0, value)).padStart(2, "0");
+
+}
+
+
+/* =====================================================
+   PRE-HUNT COUNTDOWN
+===================================================== */
+
+function updateHuntTiming() {
 
     const now =
         new Date().getTime();
 
-    const difference =
-        target - now;
+
+    /* ---------------------------------------------
+       STAGE 1
+       Before October 24
+    --------------------------------------------- */
+
+    if (now < mapRevealTime) {
+
+        mapCard.classList.add("hidden");
+
+        clueCard.classList.add("hidden");
+
+        progressSection.classList.add("hidden");
+
+        preHuntMessage.classList.remove("hidden");
+
+        firstLightMessage.classList.add("hidden");
 
 
-    if (difference <= 0) {
+        const difference =
+            mapRevealTime - now;
 
-        document.getElementById("days").textContent = "00";
-        document.getElementById("hours").textContent = "00";
-        document.getElementById("minutes").textContent = "00";
-        document.getElementById("seconds").textContent = "00";
+
+        const days =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        const hours =
+            Math.floor(
+                (difference /
+                    (1000 * 60 * 60)) % 24
+            );
+
+
+        const minutes =
+            Math.floor(
+                (difference /
+                    (1000 * 60)) % 60
+            );
+
+
+        const seconds =
+            Math.floor(
+                (difference / 1000) % 60
+            );
+
+
+        updateNumber(
+            document.getElementById("statusDays"),
+            days
+        );
+
+        updateNumber(
+            document.getElementById("statusHours"),
+            hours
+        );
+
+        updateNumber(
+            document.getElementById("statusMinutes"),
+            minutes
+        );
+
+        updateNumber(
+            document.getElementById("statusSeconds"),
+            seconds
+        );
+
+
+        preHuntText.textContent =
+            "The hunt area will be revealed on October 24.";
 
         return;
     }
 
 
-    const days =
-        Math.floor(
-            difference / (1000 * 60 * 60 * 24)
+    /* ---------------------------------------------
+       STAGE 2
+       October 24 through October 30
+    --------------------------------------------- */
+
+    if (now < huntStartTime) {
+
+        mapCard.classList.remove("hidden");
+
+        clueCard.classList.add("hidden");
+
+        progressSection.classList.add("hidden");
+
+        preHuntMessage.classList.remove("hidden");
+
+        firstLightMessage.classList.add("hidden");
+
+
+        preHuntText.textContent =
+            "The hunt area is now revealed. The clues will appear at midnight on Halloween.";
+
+
+        const difference =
+            huntStartTime - now;
+
+
+        const days =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        const hours =
+            Math.floor(
+                (difference /
+                    (1000 * 60 * 60)) % 24
+            );
+
+
+        const minutes =
+            Math.floor(
+                (difference /
+                    (1000 * 60)) % 60
+            );
+
+
+        const seconds =
+            Math.floor(
+                (difference / 1000) % 60
+            );
+
+
+        updateNumber(
+            document.getElementById("statusDays"),
+            days
         );
 
-    const hours =
-        Math.floor(
-            (difference / (1000 * 60 * 60)) % 24
+        updateNumber(
+            document.getElementById("statusHours"),
+            hours
         );
 
-    const minutes =
-        Math.floor(
-            (difference / (1000 * 60)) % 60
+        updateNumber(
+            document.getElementById("statusMinutes"),
+            minutes
         );
 
-    const seconds =
-        Math.floor(
-            (difference / 1000) % 60
+        updateNumber(
+            document.getElementById("statusSeconds"),
+            seconds
         );
 
 
-    document.getElementById("days").textContent =
-        String(days).padStart(2, "0");
+        return;
+    }
 
-    document.getElementById("hours").textContent =
-        String(hours).padStart(2, "0");
 
-    document.getElementById("minutes").textContent =
-        String(minutes).padStart(2, "0");
+    /* ---------------------------------------------
+       STAGE 3
+       Midnight October 31 until first light
+    --------------------------------------------- */
 
-    document.getElementById("seconds").textContent =
-        String(seconds).padStart(2, "0");
+    if (now < firstLightTime) {
+
+        mapCard.classList.remove("hidden");
+
+        clueCard.classList.remove("hidden");
+
+        progressSection.classList.remove("hidden");
+
+        preHuntMessage.classList.add("hidden");
+
+        firstLightMessage.classList.remove("hidden");
+
+       answerInput.disabled = true;
+
+checkAnswer.disabled = true;
+
+answerInput.placeholder =
+    "The hunt begins at first light...";
+
+
+        const difference =
+            firstLightTime - now;
+
+
+        const hours =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60)
+            );
+
+
+        const minutes =
+            Math.floor(
+                (difference /
+                    (1000 * 60)) % 60
+            );
+
+
+        const seconds =
+            Math.floor(
+                (difference / 1000) % 60
+            );
+
+
+        updateNumber(
+            document.getElementById("lightHours"),
+            hours
+        );
+
+        updateNumber(
+            document.getElementById("lightMinutes"),
+            minutes
+        );
+
+        updateNumber(
+            document.getElementById("lightSeconds"),
+            seconds
+        );
+
+
+        return;
+    }
+
+
+    /* ---------------------------------------------
+       STAGE 4
+       First light — hunt is active
+    --------------------------------------------- */
+
+    mapCard.classList.remove("hidden");
+
+    clueCard.classList.remove("hidden");
+
+    progressSection.classList.remove("hidden");
+
+   answerInput.disabled = false;
+
+checkAnswer.disabled = false;
+
+answerInput.placeholder =
+    "Enter your answer...";
+   
+    huntStatus.classList.add("hidden");
+
 }
 
 
-updateCountdown();
+/* Start timing */
 
-setInterval(updateCountdown, 1000);
+updateHuntTiming();
 
+setInterval(updateHuntTiming, 1000);
 
 /* =====================================================
    LOAD SAVED PROGRESS
