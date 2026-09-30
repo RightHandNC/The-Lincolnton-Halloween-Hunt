@@ -13,9 +13,9 @@
    You can change this later if you want.
 */
 
-const MAP_REVEAL_DATE = "2026-10-24T00:00:00";
-const HUNT_START_DATE = "2026-10-31T00:00:00";
-const FIRST_LIGHT_DATE = "2026-10-31T07:19:00";
+const MAP_REVEAL_DATE = "2026-10-24T00:00:00-04:00";
+const HUNT_START_DATE = "2026-10-31T00:00:00-04:00";
+const FIRST_LIGHT_DATE = "2026-10-31T07:19:00-04:00";
 
 
 /* =====================================================
@@ -584,13 +584,28 @@ function loadClue() {
 
     nextClueArea.classList.add("hidden");
 
+const now = new Date().getTime();
+
+if (now >= firstLightTime) {
 
     checkAnswer.disabled = false;
-
     answerInput.disabled = false;
 
+    answerInput.placeholder =
+        "Enter your answer...";
 
     answerInput.focus();
+
+} else {
+
+    checkAnswer.disabled = true;
+    answerInput.disabled = true;
+
+    answerInput.placeholder =
+        "The hunt begins at first light...";
+
+}
+    
 
 }
 
