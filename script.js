@@ -297,7 +297,7 @@ updateNumber(
 );
 
         preHuntText.textContent =
-            "The boundaries will be revealed on October 24.";
+            "Check back on the 14th for another update...";
 
         return;
     }
