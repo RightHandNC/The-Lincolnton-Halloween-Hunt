@@ -184,9 +184,6 @@ const preHuntMessage =
 const preHuntText =
     document.getElementById("preHuntText");
 
-const preHuntCountdown =
-    document.getElementById("preHuntCountdown");
-
 const firstLightMessage =
     document.getElementById("firstLightMessage");
 
