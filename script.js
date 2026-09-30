@@ -17,7 +17,6 @@ const MAP_REVEAL_DATE = "2026-10-24T00:00:00-04:00";
 const HUNT_START_DATE = "2026-10-31T00:00:00-04:00";
 const FIRST_LIGHT_DATE = "2026-10-31T07:19:00-04:00";
 
-
 /* =====================================================
    YOUR CLUES
 ===================================================== */
@@ -141,6 +140,17 @@ const music =
 const musicToggle =
     document.getElementById("musicToggle");
 
+const countdownDays =
+    document.getElementById("days");
+
+const countdownHours =
+    document.getElementById("hours");
+
+const countdownMinutes =
+    document.getElementById("minutes");
+
+const countdownSeconds =
+    document.getElementById("seconds");
 
 /* =====================================================
    COUNTDOWN
@@ -270,28 +280,27 @@ function updateHuntTiming() {
 
 
         updateNumber(
-            document.getElementById("statusDays"),
-            days
-        );
+    countdownDays,
+    days
+);
 
-        updateNumber(
-            document.getElementById("statusHours"),
-            hours
-        );
+updateNumber(
+    countdownHours,
+    hours
+);
 
-        updateNumber(
-            document.getElementById("statusMinutes"),
-            minutes
-        );
+updateNumber(
+    countdownMinutes,
+    minutes
+);
 
-        updateNumber(
-            document.getElementById("statusSeconds"),
-            seconds
-        );
-
+updateNumber(
+    countdownSeconds,
+    seconds
+);
 
         preHuntText.textContent =
-            "The hunt area will be revealed on October 24.";
+            "The boundaries will be revealed on October 24.";
 
         return;
     }
@@ -351,24 +360,24 @@ function updateHuntTiming() {
 
 
         updateNumber(
-            document.getElementById("statusDays"),
-            days
-        );
+    countdownDays,
+    days
+);
 
-        updateNumber(
-            document.getElementById("statusHours"),
-            hours
-        );
+updateNumber(
+    countdownHours,
+    hours
+);
 
-        updateNumber(
-            document.getElementById("statusMinutes"),
-            minutes
-        );
+updateNumber(
+    countdownMinutes,
+    minutes
+);
 
-        updateNumber(
-            document.getElementById("statusSeconds"),
-            seconds
-        );
+updateNumber(
+    countdownSeconds,
+    seconds
+);
 
 
         return;
