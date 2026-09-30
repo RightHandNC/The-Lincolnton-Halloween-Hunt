@@ -356,3 +356,58 @@ footer {
     }
 
 }
+/* =====================================================
+   HUNT STATUS / COUNTDOWN
+===================================================== */
+
+.hunt-status {
+    text-align: center;
+}
+
+.hunt-message h2 {
+    margin-top: 0;
+    color: #ff7518;
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+}
+
+.hunt-message p {
+    color: #d5ccd8;
+    line-height: 1.6;
+}
+
+.status-countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.status-countdown div {
+    background: #0d0a0f;
+    border-radius: 10px;
+    padding: 10px 4px;
+}
+
+.status-countdown span {
+    display: block;
+    color: #ff7518;
+    font-family: "Cinzel", serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.status-countdown small {
+    color: #888;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+}
+
+/* First-light countdown only needs three boxes */
+
+#firstLightCountdown {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
