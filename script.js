@@ -239,7 +239,7 @@ function updateHuntTiming() {
 
 
         const difference =
-            mapRevealTime - now;
+            huntStartTime - now;
 
 
         const days =
