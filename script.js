@@ -134,12 +134,6 @@ const nextClueButton =
 const resetButton =
     document.getElementById("resetProgress");
 
-const music =
-    document.getElementById("music");
-
-const musicToggle =
-    document.getElementById("musicToggle");
-
 const countdownDays =
     document.getElementById("days");
 
@@ -824,46 +818,6 @@ function resetProgress() {
     loadClue();
 
 }
-
-
-/* =====================================================
-   MUSIC PLAYER
-===================================================== */
-
-musicToggle.addEventListener(
-    "click",
-    async function () {
-
-        if (music.paused) {
-
-            try {
-
-                await music.play();
-
-                musicToggle.textContent =
-                    "⏸ Pause Music";
-
-            } catch (error) {
-
-                console.log(
-                    "Music could not be played.",
-                    error
-                );
-
-            }
-
-        } else {
-
-            music.pause();
-
-            musicToggle.textContent =
-                "▶ Play Music";
-
-        }
-
-    }
-);
-
 
 /* =====================================================
    BUTTONS
